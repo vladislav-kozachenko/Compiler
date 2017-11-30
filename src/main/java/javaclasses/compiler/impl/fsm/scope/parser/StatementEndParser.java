@@ -4,21 +4,22 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
-import javaclasses.compiler.impl.fsm.statement.Statement;
-import javaclasses.compiler.impl.fsm.statement.StatementState;
+import javaclasses.compiler.impl.command.LineDelimiterCommand;
 
 import java.util.List;
 
-public class StatementParser implements SourceCodeParser {
+public class StatementEndParser implements SourceCodeParser {
     @Override
     public boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError {
 
         final String code = reader.getRemainingCode();
 
-        if (!code.isEmpty()) {
-            new Statement().start(StatementState.START, reader, output);
+        if (code.startsWith(";") || code.startsWith("}")) {
+            output.add(new LineDelimiterCommand());
+            reader.incrementParsePosition(1);
             return true;
         }
+
 
         return false;
     }
