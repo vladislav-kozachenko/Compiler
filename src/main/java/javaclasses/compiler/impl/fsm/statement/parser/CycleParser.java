@@ -4,6 +4,8 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
+import javaclasses.compiler.impl.fsm.cycle.Cycle;
+import javaclasses.compiler.impl.fsm.cycle.CycleState;
 
 import java.util.List;
 
@@ -17,7 +19,6 @@ public class CycleParser implements SourceCodeParser {
             new Cycle().start(CycleState.START, reader, output);
             return true;
         }
-
 
         return false;
     }
