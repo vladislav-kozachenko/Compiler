@@ -4,6 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
+import javaclasses.compiler.impl.function.FunctionFactory;
 
 import java.util.List;
 
