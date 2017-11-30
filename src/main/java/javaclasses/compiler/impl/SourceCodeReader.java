@@ -34,7 +34,7 @@ public class SourceCodeReader {
      * Creates new string from the next token to the end of string. Skips the whitespaces.
      * @return substring from current parsing position to end of source code.
      */
-    public String getRemainingExpression() {
+    public String getRemainingCode() {
         while (!endOfExpression()
                 && Character.isWhitespace(sourceCode.charAt(parsePosition))){
             parsePosition++;
