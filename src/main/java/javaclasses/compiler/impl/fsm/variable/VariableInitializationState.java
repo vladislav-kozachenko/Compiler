@@ -1,4 +1,9 @@
 package javaclasses.compiler.impl.fsm.variable;
 
-public class VariableInitializationState {
+public enum VariableInitializationState {
+    START,
+    VARIABLE_NAME,
+    ASSIGN,
+    EXPRESSION,
+    FINISH
 }

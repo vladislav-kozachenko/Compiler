@@ -23,7 +23,6 @@ public class ExecutionScope extends FiniteStateMachine<List<Command>, SourceCode
         put(START, of(STATEMENT));
         put(STATEMENT, of(STATEMENT_END));
         put(STATEMENT_END, of(STATEMENT, FINISH));
-
     }};
 
     @Override

@@ -1,22 +1,20 @@
-package javaclasses.compiler.impl.fsm.scope.parser;
+package javaclasses.compiler.impl.fsm.statement.parser;
 
 import javaclasses.compiler.impl.SourceCodeParser;
-import javaclasses.compiler.impl.fsm.scope.ExecutionScopeState;
+import javaclasses.compiler.impl.fsm.statement.StatementState;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static javaclasses.compiler.impl.fsm.scope.ExecutionScopeState.*;
 
-public class ExecutionScopeParserFactory  {
+public class StatementParserFactory {
 
-    private final Map<ExecutionScopeState, SourceCodeParser> parsers = new HashMap<ExecutionScopeState, SourceCodeParser>() {{
-        put(STATEMENT, new StatementParser());
-        put(STATEMENT_END, new StatementEndParser());
+    private final Map<StatementState, SourceCodeParser> parsers = new HashMap<StatementState, SourceCodeParser>() {{
+        put(StatementState.VARIABLE_INITIALIZATION, new VariableInitializationParser());
     }};
 
 
-    public  SourceCodeParser getParser(ExecutionScopeState state) {
+    public  SourceCodeParser getParser(StatementState state) {
         if (!parsers.containsKey(state)) {
             throw new IllegalStateException("Parser not found for state: " + state);
         }

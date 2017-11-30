@@ -14,7 +14,7 @@ public class SourceCodeReader {
      * Checks if the parsing pointer reached end of source code.
      * @return true if the pointer is on the end of source code.
      */
-    public boolean endOfExpression() {
+    public boolean endOfCode() {
         return parsePosition >= sourceCode.length();
     }
 
@@ -35,7 +35,7 @@ public class SourceCodeReader {
      * @return substring from current parsing position to end of source code.
      */
     public String getRemainingCode() {
-        while (!endOfExpression()
+        while (!endOfCode()
                 && Character.isWhitespace(sourceCode.charAt(parsePosition))){
             parsePosition++;
         }
