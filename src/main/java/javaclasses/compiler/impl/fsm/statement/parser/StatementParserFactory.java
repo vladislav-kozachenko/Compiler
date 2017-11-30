@@ -12,6 +12,7 @@ public class StatementParserFactory {
     private final Map<StatementState, SourceCodeParser> parsers = new HashMap<StatementState, SourceCodeParser>() {{
         put(StatementState.VARIABLE_INITIALIZATION, new VariableInitializationParser());
         put(StatementState.FUNCTION_CALL, new FunctionCallParser());
+        put(StatementState.CYCLE, new CycleParser());
     }};
 
 

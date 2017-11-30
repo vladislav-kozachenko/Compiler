@@ -13,6 +13,7 @@ public class ExecutionScopeParserFactory  {
     private final Map<ExecutionScopeState, SourceCodeParser> parsers = new HashMap<ExecutionScopeState, SourceCodeParser>() {{
         put(STATEMENT, new StatementParser());
         put(STATEMENT_END, new StatementEndParser());
+        put(FINISH, new FinishParser());
     }};
 
 
