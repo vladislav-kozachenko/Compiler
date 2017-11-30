@@ -6,13 +6,15 @@ import javaclasses.compiler.impl.fsm.statement.StatementState;
 import java.util.HashMap;
 import java.util.Map;
 
+import static javaclasses.compiler.impl.fsm.statement.StatementState.*;
+
 
 public class StatementParserFactory {
 
     private final Map<StatementState, SourceCodeParser> parsers = new HashMap<StatementState, SourceCodeParser>() {{
-        put(StatementState.VARIABLE_INITIALIZATION, new VariableInitializationParser());
-        put(StatementState.FUNCTION_CALL, new FunctionCallParser());
-        put(StatementState.CYCLE, new CycleParser());
+        put(VARIABLE_INITIALIZATION, new VariableInitializationParser());
+        put(FUNCTION_CALL, new FunctionCallParser());
+        put(CYCLE, new CycleParser());
     }};
 
 

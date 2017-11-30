@@ -5,7 +5,6 @@ import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
-import javaclasses.compiler.impl.fsm.scope.ExecutionScopeState;
 import javaclasses.compiler.impl.fsm.statement.parser.StatementParserFactory;
 
 import java.util.HashMap;
