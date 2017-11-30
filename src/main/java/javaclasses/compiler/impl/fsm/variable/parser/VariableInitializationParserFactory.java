@@ -12,6 +12,7 @@ public class VariableInitializationParserFactory {
 
     private final Map<VariableInitializationState, SourceCodeParser> parsers = new HashMap<VariableInitializationState, SourceCodeParser>() {{
         put(VARIABLE_NAME, new VariableNameParser());
+        put(ASSIGN, new AssignVariableParser());
     }};
 
 

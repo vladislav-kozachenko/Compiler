@@ -24,7 +24,6 @@ public class VariableNameParser implements javaclasses.compiler.impl.SourceCodeP
             return true;
         }
 
-
         return false;
     }
 }
