@@ -1,4 +1,4 @@
-package javaclasses.compiler.impl.fsm.variable.parser;
+package javaclasses.compiler.impl.fsm.common.parser;
 
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
@@ -19,7 +19,6 @@ public class ExpressionParser implements SourceCodeParser {
             new Expression().start(ExpressionState.START, reader, output);
             return true;
         }
-
 
         return false;
     }

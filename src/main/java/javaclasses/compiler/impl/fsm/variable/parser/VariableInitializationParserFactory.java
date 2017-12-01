@@ -1,6 +1,7 @@
 package javaclasses.compiler.impl.fsm.variable.parser;
 
 import javaclasses.compiler.impl.SourceCodeParser;
+import javaclasses.compiler.impl.fsm.common.parser.ExpressionParser;
 import javaclasses.compiler.impl.fsm.variable.VariableInitializationState;
 
 import java.util.HashMap;
