@@ -6,8 +6,6 @@ import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.expression.Expression;
 import javaclasses.compiler.impl.fsm.expression.ExpressionState;
-import javaclasses.compiler.impl.fsm.variable.VariableInitialization;
-import javaclasses.compiler.impl.fsm.variable.VariableInitializationState;
 
 import java.util.List;
 
