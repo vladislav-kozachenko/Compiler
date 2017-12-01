@@ -1,4 +1,4 @@
-package javaclasses.compiler.impl.operator;
+package javaclasses.compiler.impl.operator.math;
 
 import javaclasses.compiler.impl.BinaryOperator;
 
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static javaclasses.compiler.impl.operator.AbstractBinaryOperator.Priority.*;
+import static javaclasses.compiler.impl.operator.math.AbstractBinaryOperator.Priority.*;
 
 /**
  * Implements factory which can create instances of different binary operators.

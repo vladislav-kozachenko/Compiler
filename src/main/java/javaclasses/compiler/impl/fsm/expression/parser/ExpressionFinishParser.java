@@ -4,7 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
-import javaclasses.compiler.impl.operator.BinaryOperatorFactory;
+import javaclasses.compiler.impl.operator.math.BinaryOperatorFactory;
 
 import java.util.List;
 

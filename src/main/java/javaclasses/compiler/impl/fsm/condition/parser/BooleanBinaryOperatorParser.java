@@ -1,27 +1,26 @@
-package javaclasses.compiler.impl.fsm.expression.parser;
+package javaclasses.compiler.impl.fsm.condition.parser;
 
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
-import javaclasses.compiler.impl.command.BinaryOperatorCommand;
-import javaclasses.compiler.impl.operator.math.BinaryOperatorFactory;
+import javaclasses.compiler.impl.command.BooleanBinaryOperatorCommand;
+import javaclasses.compiler.impl.operator.bool.BooleanBinaryOperatorFactory;
 
 import java.util.List;
 
-public class BinaryOperatorParser implements SourceCodeParser {
-
+public class BooleanBinaryOperatorParser implements SourceCodeParser {
     @Override
     public boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError {
 
-        final BinaryOperatorFactory factory = new BinaryOperatorFactory();
+        final BooleanBinaryOperatorFactory factory = new BooleanBinaryOperatorFactory();
 
         final String expression = reader.getRemainingCode();
 
-        for (String sign : factory.getOperatorSigns()) {
+        for (String sign : factory.getBooleanOperatorSigns()) {
             if (expression.startsWith(sign)) {
 
-                output.add(new BinaryOperatorCommand(factory.getBinaryOperator(sign)));
+                output.add(new BooleanBinaryOperatorCommand(factory.getBooleanBinaryOperator(sign)));
                 reader.incrementParsePosition(sign.length());
 
                 return true;
@@ -30,5 +29,4 @@ public class BinaryOperatorParser implements SourceCodeParser {
 
         return false;
     }
-
 }

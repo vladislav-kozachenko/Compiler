@@ -1,4 +1,4 @@
-package javaclasses.compiler.impl.operator;
+package javaclasses.compiler.impl.operator.math;
 
 import javaclasses.compiler.impl.BinaryOperator;
 
