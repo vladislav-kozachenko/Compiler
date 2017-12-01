@@ -1,5 +1,8 @@
 package javaclasses.compiler.impl.fsm.condition;
 
 public enum BooleanConditionState {
-    START
+    START,
+    BOOLEAN_BINARY_OPERATOR,
+    EXPRESSION,
+    FINISH
 }

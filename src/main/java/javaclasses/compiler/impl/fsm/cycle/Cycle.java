@@ -30,8 +30,6 @@ public class Cycle extends FiniteStateMachine<List<Command>, SourceCodeReader, C
         put(CLOSING_BRACE, of(FINISH));
     }};
 
-
-
     @Override
     protected boolean acceptState(SourceCodeReader sourceCodeReader, List<Command> commands, CycleState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
