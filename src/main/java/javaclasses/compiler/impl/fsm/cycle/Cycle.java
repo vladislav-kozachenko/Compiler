@@ -45,7 +45,7 @@ public class Cycle extends FiniteStateMachine<List<Command>, SourceCodeReader, C
 
     @Override
     protected Set<CycleState> getPossibleTransitions(CycleState currentState) {
-        return null;
+        return transitions.get(currentState);
     }
 
     @Override
