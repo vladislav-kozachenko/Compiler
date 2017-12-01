@@ -19,7 +19,7 @@ public class ExpressionParserFactory {
     }};
 
 
-    public  SourceCodeParser getParser(VariableInitializationState state) {
+    public  SourceCodeParser getParser(ExpressionState state) {
         if (!parsers.containsKey(state)) {
             throw new IllegalStateException("Parser not found for state: " + state);
         }
