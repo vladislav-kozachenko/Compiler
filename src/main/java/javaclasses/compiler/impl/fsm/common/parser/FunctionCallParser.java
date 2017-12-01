@@ -1,4 +1,4 @@
-package javaclasses.compiler.impl.fsm.statement.parser;
+package javaclasses.compiler.impl.fsm.common.parser;
 
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;

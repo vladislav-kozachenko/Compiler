@@ -1,6 +1,7 @@
 package javaclasses.compiler.impl.fsm.statement.parser;
 
 import javaclasses.compiler.impl.SourceCodeParser;
+import javaclasses.compiler.impl.fsm.common.parser.FunctionCallParser;
 import javaclasses.compiler.impl.fsm.statement.StatementState;
 
 import java.util.HashMap;
