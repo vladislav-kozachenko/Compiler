@@ -25,7 +25,6 @@ public class Expression extends FiniteStateMachine<List<Command>, SourceCodeRead
         put(BINARY_OPERATOR, of(CALCULABLE));
     }};
 
-
     @Override
     protected boolean acceptState(SourceCodeReader reader, List<Command> commands, ExpressionState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
