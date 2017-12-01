@@ -20,9 +20,10 @@ public class BooleanCondition extends FiniteStateMachine<List<Command>, SourceCo
     private final BooleanConditionParserFactory parserFactory = new BooleanConditionParserFactory();
 
     private final Map<BooleanConditionState, Set<BooleanConditionState>> transitions = new HashMap<BooleanConditionState, Set<BooleanConditionState>>() {{
-        put(START, of(EXPRESSION));
-        put(EXPRESSION, of(BOOLEAN_BINARY_OPERATOR, FINISH));
-        put(BOOLEAN_BINARY_OPERATOR, of(EXPRESSION));
+        put(START, of(LEFT_EXPRESSION));
+        put(LEFT_EXPRESSION, of(BOOLEAN_BINARY_OPERATOR));
+        put(BOOLEAN_BINARY_OPERATOR, of(RIGHT_EXPRESSION));
+        put(RIGHT_EXPRESSION, of(FINISH));
     }};
 
     @Override
