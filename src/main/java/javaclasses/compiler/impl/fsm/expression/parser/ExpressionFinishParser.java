@@ -4,13 +4,11 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
-import javaclasses.compiler.impl.command.BinaryOperatorCommand;
 import javaclasses.compiler.impl.operator.BinaryOperatorFactory;
 
 import java.util.List;
 
-public class BinaryOperatorParser implements SourceCodeParser {
-
+public class ExpressionFinishParser implements SourceCodeParser {
     @Override
     public boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError {
 
@@ -20,15 +18,10 @@ public class BinaryOperatorParser implements SourceCodeParser {
 
         for (String sign : factory.getOperatorSigns()) {
             if (expression.startsWith(sign)) {
-
-                output.add(new BinaryOperatorCommand(factory.getBinaryOperator(sign)));
-                reader.incrementParsePosition(sign.length());
-
-                return true;
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
-
 }
