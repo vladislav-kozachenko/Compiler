@@ -2,10 +2,7 @@ package javaclasses.compiler.impl.fsm.calculable.parser;
 
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.fsm.calculable.CalculableState;
-import javaclasses.compiler.impl.fsm.common.parser.ClosingBracketParser;
-import javaclasses.compiler.impl.fsm.common.parser.FunctionCallParser;
-import javaclasses.compiler.impl.fsm.common.parser.OpeningBracketParser;
-import javaclasses.compiler.impl.fsm.common.parser.ExpressionParser;
+import javaclasses.compiler.impl.fsm.common.parser.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +18,7 @@ public class CalculableParserFactory {
         put(OPENING_BRACKET, new OpeningBracketParser());
         put(CLOSING_BRACKET, new ClosingBracketParser());
         put(EXPRESSION, new ExpressionParser());
+        put(FINISH, new AcceptFinish());
     }};
 
 
