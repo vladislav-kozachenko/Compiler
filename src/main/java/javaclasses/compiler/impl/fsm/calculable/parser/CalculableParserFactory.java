@@ -14,6 +14,7 @@ public class CalculableParserFactory {
 
     private final Map<CalculableState, SourceCodeParser> parsers = new HashMap<CalculableState, SourceCodeParser>() {{
         put(NUMBER, new NumberParser());
+        put(VARIABLE, new VariableParser());
         put(FUNCTION_CALL, new FunctionCallParser());
         put(OPENING_BRACKET, new OpeningBracketParser());
         put(CLOSING_BRACKET, new ClosingBracketParser());

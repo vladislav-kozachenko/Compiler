@@ -20,14 +20,14 @@ public class CompilerTest {
                 "c = 3;" +
                 "}" +
                 "}" +
-                "b = 2;");
+                "b = a + 2;");
         List<Command> commands = output.getCommandList();
         System.out.println(commands);
     }
 
     @Test
     public void testVariableInitialization() throws Exception {
-        CompilationOutput output = new CompilerImpl().compile("a = 1+2;");
+        CompilationOutput output = new CompilerImpl().compile("a = 1+2; b = a+1;");
         List<Command> commands = output.getCommandList();
         Assert.assertTrue(commands.get(0) instanceof StatementStartCommand);
         Assert.assertTrue(commands.get(1) instanceof DefineVariableCommand);

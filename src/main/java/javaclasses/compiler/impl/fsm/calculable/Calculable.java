@@ -21,8 +21,9 @@ public class Calculable extends FiniteStateMachine<CompilationOutput, SourceCode
     private final CalculableParserFactory parserFactory = new CalculableParserFactory();
 
     private final Map<CalculableState, Set<CalculableState>> transitions = new HashMap<CalculableState, Set<CalculableState>>() {{
-        put(START, of(NUMBER, FUNCTION_CALL, OPENING_BRACKET));
+        put(START, of(NUMBER, VARIABLE, FUNCTION_CALL, OPENING_BRACKET));
         put(NUMBER, of(FINISH));
+        put(VARIABLE, of(FINISH));
         put(FUNCTION_CALL, of(FINISH));
         put(OPENING_BRACKET, of(EXPRESSION));
         put(EXPRESSION, of(CLOSING_BRACKET));
