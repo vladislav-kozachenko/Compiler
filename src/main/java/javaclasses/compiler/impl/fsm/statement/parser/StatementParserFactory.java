@@ -1,6 +1,7 @@
 package javaclasses.compiler.impl.fsm.statement.parser;
 
 import javaclasses.compiler.impl.SourceCodeParser;
+import javaclasses.compiler.impl.fsm.ParserFactory;
 import javaclasses.compiler.impl.fsm.common.parser.AcceptFinish;
 import javaclasses.compiler.impl.fsm.common.parser.FunctionCallParser;
 import javaclasses.compiler.impl.fsm.statement.StatementState;
@@ -11,22 +12,15 @@ import java.util.Map;
 import static javaclasses.compiler.impl.fsm.statement.StatementState.*;
 
 
-public class StatementParserFactory {
+public class StatementParserFactory extends ParserFactory<StatementState> {
 
-    private final Map<StatementState, SourceCodeParser> parsers = new HashMap<StatementState, SourceCodeParser>() {{
-        put(VARIABLE_INITIALIZATION, new VariableInitializationParser());
-        put(FUNCTION_CALL, new FunctionCallParser());
-        put(CYCLE, new CycleParser());
-        put(FINISH, new AcceptFinish());
-    }};
-
-
-    public  SourceCodeParser getParser(StatementState state) {
-        if (!parsers.containsKey(state)) {
-            throw new IllegalStateException("Parser not found for state: " + state);
-        }
-
-        return parsers.get(state);
+    public StatementParserFactory() {
+        parsers = new HashMap<StatementState, SourceCodeParser>() {{
+            put(VARIABLE_INITIALIZATION, new VariableInitializationParser());
+            put(FUNCTION_CALL, new FunctionCallParser());
+            put(CYCLE, new CycleParser());
+            put(FINISH, new AcceptFinish());
+        }};
     }
 
 }
