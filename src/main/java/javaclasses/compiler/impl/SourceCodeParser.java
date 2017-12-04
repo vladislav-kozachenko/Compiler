@@ -16,5 +16,5 @@ public interface SourceCodeParser {
      * @param output is the output where parsed command must be saved.
      * @return true if parsing was successful.
      */
-    boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError;
+    boolean parse(SourceCodeReader reader, CompilationOutput output) throws CompilationError;
 }

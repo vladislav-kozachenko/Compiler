@@ -11,15 +11,15 @@ import java.util.Optional;
 
 public class CompilerImpl implements Compiler {
     @Override
-    public List<Command> compile(String sourceCode) throws Exception {
+    public CompilationOutput compile(String sourceCode) throws Exception {
         SourceCodeReader reader = new SourceCodeReader(sourceCode);
-        List<Command> output = new ArrayList<>();
+        CompilationOutput output = new CompilationOutput();
         new ExecutionScope().start(ExecutionScopeState.START, reader, output);
         return output;
     }
 
     @Override
-    public Optional execute(List<Command> executionScope) throws Exception {
+    public Optional execute(CompilationOutput executionScope) throws Exception {
         return Optional.empty();
     }
 }

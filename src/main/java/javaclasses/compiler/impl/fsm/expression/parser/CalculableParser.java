@@ -2,6 +2,7 @@ package javaclasses.compiler.impl.fsm.expression.parser;
 
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
+import javaclasses.compiler.impl.CompilationOutput;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.calculable.Calculable;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class CalculableParser implements SourceCodeParser {
     @Override
-    public boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError {
+    public boolean parse(SourceCodeReader reader, CompilationOutput output) throws CompilationError {
 
         final String code = reader.getRemainingCode();
 

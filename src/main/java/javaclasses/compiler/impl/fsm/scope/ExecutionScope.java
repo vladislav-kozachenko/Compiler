@@ -3,6 +3,7 @@ package javaclasses.compiler.impl.fsm.scope;
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
+import javaclasses.compiler.impl.CompilationOutput;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.scope.parser.ExecutionScopeParserFactory;
@@ -15,7 +16,7 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.scope.ExecutionScopeState.*;
 
-public class ExecutionScope extends FiniteStateMachine<List<Command>, SourceCodeReader, ExecutionScopeState, CompilationError> {
+public class ExecutionScope extends FiniteStateMachine<CompilationOutput, SourceCodeReader, ExecutionScopeState, CompilationError> {
 
     private final ExecutionScopeParserFactory parserFactory = new ExecutionScopeParserFactory();
 
@@ -26,7 +27,7 @@ public class ExecutionScope extends FiniteStateMachine<List<Command>, SourceCode
     }};
 
     @Override
-    protected boolean acceptState(SourceCodeReader reader, List<Command> commands, ExecutionScopeState nextState) throws CompilationError {
+    protected boolean acceptState(SourceCodeReader reader, CompilationOutput commands, ExecutionScopeState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
         return parser.parse(reader, commands);
     }

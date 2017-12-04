@@ -3,6 +3,7 @@ package javaclasses.compiler.impl.fsm.expression;
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
+import javaclasses.compiler.impl.CompilationOutput;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.expression.parser.ExpressionParserFactory;
@@ -15,7 +16,7 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.expression.ExpressionState.*;
 
-public class Expression extends FiniteStateMachine<List<Command>, SourceCodeReader, ExpressionState, CompilationError> {
+public class Expression extends FiniteStateMachine<CompilationOutput, SourceCodeReader, ExpressionState, CompilationError> {
 
     private final ExpressionParserFactory parserFactory = new ExpressionParserFactory();
 
@@ -26,7 +27,7 @@ public class Expression extends FiniteStateMachine<List<Command>, SourceCodeRead
     }};
 
     @Override
-    protected boolean acceptState(SourceCodeReader reader, List<Command> commands, ExpressionState nextState) throws CompilationError {
+    protected boolean acceptState(SourceCodeReader reader, CompilationOutput commands, ExpressionState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
         return parser.parse(reader, commands);
     }

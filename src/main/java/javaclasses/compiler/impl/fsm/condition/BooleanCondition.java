@@ -3,6 +3,7 @@ package javaclasses.compiler.impl.fsm.condition;
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
+import javaclasses.compiler.impl.CompilationOutput;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.condition.parser.BooleanConditionParserFactory;
@@ -15,7 +16,7 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.condition.BooleanConditionState.*;
 
-public class BooleanCondition extends FiniteStateMachine<List<Command>, SourceCodeReader, BooleanConditionState, CompilationError> {
+public class BooleanCondition extends FiniteStateMachine<CompilationOutput, SourceCodeReader, BooleanConditionState, CompilationError> {
 
     private final BooleanConditionParserFactory parserFactory = new BooleanConditionParserFactory();
 
@@ -27,7 +28,7 @@ public class BooleanCondition extends FiniteStateMachine<List<Command>, SourceCo
     }};
 
     @Override
-    protected boolean acceptState(SourceCodeReader sourceCodeReader, List<Command> commands, BooleanConditionState nextState) throws CompilationError {
+    protected boolean acceptState(SourceCodeReader sourceCodeReader, CompilationOutput commands, BooleanConditionState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
         return parser.parse(sourceCodeReader, commands);
     }

@@ -1,11 +1,13 @@
 package javaclasses.compiler;
 
+import javaclasses.compiler.impl.CompilationOutput;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface Compiler {
 
-    List<Command> compile(String sourceCode) throws Exception;
+    CompilationOutput compile(String sourceCode) throws Exception;
 
-    Optional execute(List<Command> executionScope) throws Exception;
+    Optional execute(CompilationOutput executionScope) throws Exception;
 }

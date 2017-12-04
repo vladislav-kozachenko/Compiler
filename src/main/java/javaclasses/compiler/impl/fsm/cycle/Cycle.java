@@ -3,6 +3,7 @@ package javaclasses.compiler.impl.fsm.cycle;
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
+import javaclasses.compiler.impl.CompilationOutput;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.cycle.parser.CycleParserFactory;
@@ -15,7 +16,7 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.cycle.CycleState.*;
 
-public class Cycle extends FiniteStateMachine<List<Command>, SourceCodeReader, CycleState, CompilationError> {
+public class Cycle extends FiniteStateMachine<CompilationOutput, SourceCodeReader, CycleState, CompilationError> {
 
     private final CycleParserFactory parserFactory = new CycleParserFactory();
 
@@ -31,7 +32,7 @@ public class Cycle extends FiniteStateMachine<List<Command>, SourceCodeReader, C
     }};
 
     @Override
-    protected boolean acceptState(SourceCodeReader sourceCodeReader, List<Command> commands, CycleState nextState) throws CompilationError {
+    protected boolean acceptState(SourceCodeReader sourceCodeReader, CompilationOutput commands, CycleState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
         return parser.parse(sourceCodeReader, commands);
     }

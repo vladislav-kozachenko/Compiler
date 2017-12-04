@@ -3,6 +3,7 @@ package javaclasses.compiler.impl.fsm.function;
 import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
+import javaclasses.compiler.impl.CompilationOutput;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.function.parser.FunctionCallParserFactory;
@@ -15,7 +16,7 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.function.FunctionCallState.*;
 
-public class FunctionCall extends FiniteStateMachine<List<Command>, SourceCodeReader, FunctionCallState, CompilationError> {
+public class FunctionCall extends FiniteStateMachine<CompilationOutput, SourceCodeReader, FunctionCallState, CompilationError> {
 
     private final FunctionCallParserFactory parserFactory = new FunctionCallParserFactory();
 
@@ -30,7 +31,7 @@ public class FunctionCall extends FiniteStateMachine<List<Command>, SourceCodeRe
 
 
     @Override
-    protected boolean acceptState(SourceCodeReader reader, List<Command> commands, FunctionCallState nextState) throws CompilationError {
+    protected boolean acceptState(SourceCodeReader reader, CompilationOutput commands, FunctionCallState nextState) throws CompilationError {
         final SourceCodeParser parser = parserFactory.getParser(nextState);
         return parser.parse(reader, commands);
     }
