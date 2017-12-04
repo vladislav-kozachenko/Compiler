@@ -19,6 +19,7 @@ public class VariableNameParser implements javaclasses.compiler.impl.SourceCodeP
         if (matcher.find()) {
             final String variableName = matcher.group();
             output.addCommand(new DefineVariableCommand(variableName));
+            output.defineVariable(variableName);
             reader.incrementParsePosition(variableName.length());
             return true;
         }

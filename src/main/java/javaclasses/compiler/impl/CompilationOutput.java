@@ -29,4 +29,8 @@ public class CompilationOutput {
     public List<Command> getCommandList(){
         return algorithm;
     }
+
+    public Set<String> getVariables() {
+        return variables;
+    }
 }
