@@ -2,6 +2,8 @@ package javaclasses.compiler.impl;
 
 import javaclasses.compiler.Command;
 import javaclasses.compiler.Compiler;
+import javaclasses.compiler.impl.executor.ExecutionContext;
+import javaclasses.compiler.impl.executor.Executor;
 import javaclasses.compiler.impl.fsm.scope.ExecutionScope;
 import javaclasses.compiler.impl.fsm.scope.ExecutionScopeState;
 
@@ -19,7 +21,8 @@ public class CompilerImpl implements Compiler {
     }
 
     @Override
-    public Optional execute(CompilationOutput executionScope) throws Exception {
-        return Optional.empty();
+    public Optional execute(CompilationOutput output) throws Exception {
+        final ExecutionContext globalContext = new ExecutionContext();
+        return new Executor().execute(output, globalContext);
     }
 }
