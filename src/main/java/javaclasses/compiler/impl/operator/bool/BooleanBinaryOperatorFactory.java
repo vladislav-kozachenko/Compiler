@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class BooleanBinaryOperatorFactory {
     private final Map<String, BooleanBinaryOperator> operators = new HashMap<String, BooleanBinaryOperator>() {{
+        put("==", new EqualityOperator());
     }};
 
     /**

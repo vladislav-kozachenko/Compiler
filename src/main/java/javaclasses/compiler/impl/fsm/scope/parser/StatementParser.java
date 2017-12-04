@@ -15,7 +15,7 @@ public class StatementParser implements SourceCodeParser {
 
         final String code = reader.getRemainingCode();
 
-        if (!code.isEmpty()) {
+        if (!code.isEmpty() && !code.startsWith("}") && !code.startsWith(";")) {
             new Statement().start(StatementState.START, reader, output);
             return true;
         }

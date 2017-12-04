@@ -10,6 +10,10 @@ import java.util.List;
 public class FinishParser implements SourceCodeParser {
     @Override
     public boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError {
-        return reader.endOfCode();
+
+        final String code = reader.getRemainingCode();
+
+        return code.startsWith(";") || code.startsWith("}") || reader.endOfCode();
+
     }
 }

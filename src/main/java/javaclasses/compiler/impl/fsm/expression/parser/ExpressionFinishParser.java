@@ -14,10 +14,10 @@ public class ExpressionFinishParser implements SourceCodeParser {
 
         final BinaryOperatorFactory factory = new BinaryOperatorFactory();
 
-        final String expression = reader.getRemainingCode();
+        final String code = reader.getRemainingCode();
 
         for (String sign : factory.getOperatorSigns()) {
-            if (expression.startsWith(sign)) {
+            if (code.startsWith(sign)) {
                 return false;
             }
         }
