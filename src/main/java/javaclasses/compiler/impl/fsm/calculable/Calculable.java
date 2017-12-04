@@ -4,6 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
 import javaclasses.compiler.impl.CompilationOutput;
+import javaclasses.compiler.impl.CompilerStateMachine;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.calculable.parser.CalculableParserFactory;
@@ -16,19 +17,21 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.calculable.CalculableState.*;
 
-public class Calculable extends FiniteStateMachine<CompilationOutput, SourceCodeReader, CalculableState, CompilationError> {
+public class Calculable extends CompilerStateMachine<CalculableState> {
 
     private final CalculableParserFactory parserFactory = new CalculableParserFactory();
 
-    private final Map<CalculableState, Set<CalculableState>> transitions = new HashMap<CalculableState, Set<CalculableState>>() {{
-        put(START, of(NUMBER, VARIABLE, FUNCTION_CALL, OPENING_BRACKET));
-        put(NUMBER, of(FINISH));
-        put(VARIABLE, of(FINISH));
-        put(FUNCTION_CALL, of(FINISH));
-        put(OPENING_BRACKET, of(EXPRESSION));
-        put(EXPRESSION, of(CLOSING_BRACKET));
-        put(CLOSING_BRACKET, of(FINISH));
-    }};
+    public Calculable() {
+        transitions = new HashMap<CalculableState, Set<CalculableState>>() {{
+            put(START, of(NUMBER, VARIABLE, FUNCTION_CALL, OPENING_BRACKET));
+            put(NUMBER, of(FINISH));
+            put(VARIABLE, of(FINISH));
+            put(FUNCTION_CALL, of(FINISH));
+            put(OPENING_BRACKET, of(EXPRESSION));
+            put(EXPRESSION, of(CLOSING_BRACKET));
+            put(CLOSING_BRACKET, of(FINISH));
+        }};
+    }
 
 
     @Override
@@ -42,13 +45,4 @@ public class Calculable extends FiniteStateMachine<CompilationOutput, SourceCode
         return currentState == FINISH;
     }
 
-    @Override
-    protected Set<CalculableState> getPossibleTransitions(CalculableState currentState) {
-        return transitions.get(currentState);
-    }
-
-    @Override
-    protected void raiseDeadlockError(CalculableState calculableState, SourceCodeReader sourceCodeReader) throws CompilationError {
-        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
-    }
 }

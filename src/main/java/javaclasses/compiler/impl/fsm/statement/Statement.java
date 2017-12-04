@@ -4,6 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
 import javaclasses.compiler.impl.CompilationOutput;
+import javaclasses.compiler.impl.CompilerStateMachine;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.statement.parser.StatementParserFactory;
@@ -16,17 +17,18 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.statement.StatementState.*;
 
-public class Statement extends FiniteStateMachine<CompilationOutput, SourceCodeReader, StatementState, CompilationError> {
+public class Statement extends CompilerStateMachine<StatementState> {
 
     private final StatementParserFactory parserFactory = new StatementParserFactory();
 
-    private final Map<StatementState, Set<StatementState>> transitions = new HashMap<StatementState, Set<StatementState>>() {{
-        put(START, of(VARIABLE_INITIALIZATION, FUNCTION_CALL, CYCLE));
-        put(VARIABLE_INITIALIZATION, of(FINISH));
-        put(FUNCTION_CALL, of(FINISH));
-        put(CYCLE, of(FINISH));
-    }};
-
+    public Statement() {
+        transitions = new HashMap<StatementState, Set<StatementState>>() {{
+            put(START, of(VARIABLE_INITIALIZATION, FUNCTION_CALL, CYCLE));
+            put(VARIABLE_INITIALIZATION, of(FINISH));
+            put(FUNCTION_CALL, of(FINISH));
+            put(CYCLE, of(FINISH));
+        }};
+    }
 
     @Override
     protected boolean acceptState(SourceCodeReader reader, CompilationOutput commands, StatementState nextState) throws CompilationError {
@@ -39,13 +41,4 @@ public class Statement extends FiniteStateMachine<CompilationOutput, SourceCodeR
         return currentState == FINISH;
     }
 
-    @Override
-    protected Set<StatementState> getPossibleTransitions(StatementState currentState) {
-        return transitions.get(currentState);
-    }
-
-    @Override
-    protected void raiseDeadlockError(StatementState statementState, SourceCodeReader sourceCodeReader) throws CompilationError {
-        throw new CompilationError("Incorrect source." + statementState, sourceCodeReader.getParsePosition());
-    }
 }

@@ -4,6 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.fsm.FiniteStateMachine;
 import javaclasses.compiler.impl.CompilationOutput;
+import javaclasses.compiler.impl.CompilerStateMachine;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
 import javaclasses.compiler.impl.fsm.variable.parser.VariableInitializationParserFactory;
@@ -16,16 +17,19 @@ import java.util.Set;
 import static java.util.EnumSet.of;
 import static javaclasses.compiler.impl.fsm.variable.VariableInitializationState.*;
 
-public class VariableInitialization extends FiniteStateMachine<CompilationOutput, SourceCodeReader, VariableInitializationState, CompilationError> {
+public class VariableInitialization extends CompilerStateMachine<VariableInitializationState> {
 
     private final VariableInitializationParserFactory parserFactory = new VariableInitializationParserFactory();
 
-    private final Map<VariableInitializationState, Set<VariableInitializationState>> transitions = new HashMap<VariableInitializationState, Set<VariableInitializationState>>() {{
-        put(START, of(VARIABLE_NAME));
-        put(VARIABLE_NAME, of(ASSIGN));
-        put(ASSIGN, of(EXPRESSION));
-        put(EXPRESSION, of(FINISH));
-    }};
+    public VariableInitialization() {
+        transitions = new HashMap<VariableInitializationState, Set<VariableInitializationState>>() {{
+            put(START, of(VARIABLE_NAME));
+            put(VARIABLE_NAME, of(ASSIGN));
+            put(ASSIGN, of(EXPRESSION));
+            put(EXPRESSION, of(FINISH));
+        }};
+    }
+
 
     @Override
     protected boolean acceptState(SourceCodeReader reader, CompilationOutput commands, VariableInitializationState nextState) throws CompilationError {
@@ -38,13 +42,4 @@ public class VariableInitialization extends FiniteStateMachine<CompilationOutput
         return currentState == FINISH;
     }
 
-    @Override
-    protected Set<VariableInitializationState> getPossibleTransitions(VariableInitializationState currentState) {
-        return transitions.get(currentState);
-    }
-
-    @Override
-    protected void raiseDeadlockError(VariableInitializationState variableInitializationState, SourceCodeReader sourceCodeReader) throws CompilationError {
-        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
-    }
 }
