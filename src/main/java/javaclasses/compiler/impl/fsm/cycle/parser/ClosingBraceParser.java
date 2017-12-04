@@ -16,7 +16,6 @@ public class ClosingBraceParser implements SourceCodeParser {
         if (code.startsWith("}")) {
 
             output.add(new ClosingBraceCommand());
-            reader.incrementParsePosition(1);
 
             return true;
         }

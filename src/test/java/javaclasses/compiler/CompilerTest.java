@@ -17,8 +17,8 @@ public class CompilerTest {
                 "a = 1 + 1;" +
                 "while(1 == 2) {" +
                 "c = 3;" +
-                "};" +
-                "};" +
+                "}" +
+                "}" +
                 "b = 2;");
         System.out.println(commands);
     }
