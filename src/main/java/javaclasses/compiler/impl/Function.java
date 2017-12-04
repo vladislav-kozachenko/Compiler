@@ -15,18 +15,11 @@ public abstract class Function {
         this.maxArguments = maxArguments;
     }
 
-    abstract public Optional<Double> execute(List<Double> args, ErrorHandler errorHandler) throws CompilationError;
+    abstract public Optional<Double> execute(List<Double> args) throws Exception;
 
-    protected void validateArgumentsNumber(int argumentsNumber, ErrorHandler errorHandler) throws CompilationError {
+    protected void validateArgumentsNumber(int argumentsNumber) throws Exception {
         if (argumentsNumber < minArguments || argumentsNumber > maxArguments) {
-            if (minArguments == maxArguments) {
-                errorHandler.raiseError("Function requires " + minArguments + " arguments.");
-            } else {
-                errorHandler.raiseError(argumentsNumber
-                        + " arguments is not allowed here. Use from "
-                        + minArguments + " to "
-                        + maxArguments + " arguments.");
-            }
+            throw new Exception("Wrong number of arguments.");
         }
     }
 
