@@ -45,6 +45,6 @@ public class Statement extends FiniteStateMachine<List<Command>, SourceCodeReade
 
     @Override
     protected void raiseDeadlockError(StatementState statementState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source." + statementState, sourceCodeReader.getParsePosition());
     }
 }

@@ -12,7 +12,7 @@ public class WhileParser implements SourceCodeParser {
     public boolean parse(SourceCodeReader reader, List<Command> output) throws CompilationError {
         final String code = reader.getRemainingCode();
 
-        if (code.matches("^while\\(")) {
+        if (code.matches("^while\\(.*")) {
             reader.incrementParsePosition(5);
             return true;
         }

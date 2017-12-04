@@ -48,6 +48,6 @@ public class Cycle extends FiniteStateMachine<List<Command>, SourceCodeReader, C
 
     @Override
     protected void raiseDeadlockError(CycleState cycleState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }

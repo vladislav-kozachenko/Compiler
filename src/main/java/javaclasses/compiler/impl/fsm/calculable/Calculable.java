@@ -47,6 +47,6 @@ public class Calculable extends FiniteStateMachine<List<Command>, SourceCodeRead
 
     @Override
     protected void raiseDeadlockError(CalculableState calculableState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }

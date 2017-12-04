@@ -43,6 +43,6 @@ public class ExecutionScope extends FiniteStateMachine<List<Command>, SourceCode
 
     @Override
     protected void raiseDeadlockError(ExecutionScopeState executionScopeState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }

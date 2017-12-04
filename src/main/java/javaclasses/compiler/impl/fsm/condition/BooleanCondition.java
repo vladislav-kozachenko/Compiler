@@ -44,6 +44,6 @@ public class BooleanCondition extends FiniteStateMachine<List<Command>, SourceCo
 
     @Override
     protected void raiseDeadlockError(BooleanConditionState booleanConditionState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }

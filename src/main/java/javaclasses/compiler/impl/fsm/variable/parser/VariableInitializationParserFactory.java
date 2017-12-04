@@ -1,6 +1,7 @@
 package javaclasses.compiler.impl.fsm.variable.parser;
 
 import javaclasses.compiler.impl.SourceCodeParser;
+import javaclasses.compiler.impl.fsm.common.parser.AcceptFinish;
 import javaclasses.compiler.impl.fsm.common.parser.ExpressionParser;
 import javaclasses.compiler.impl.fsm.variable.VariableInitializationState;
 
@@ -15,6 +16,7 @@ public class VariableInitializationParserFactory {
         put(VARIABLE_NAME, new VariableNameParser());
         put(ASSIGN, new AssignVariableParser());
         put(EXPRESSION, new ExpressionParser());
+        put(FINISH, new AcceptFinish());
     }};
 
 

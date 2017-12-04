@@ -19,7 +19,7 @@ public abstract class FiniteStateMachine<
         State currentState = startState;
 
         if ( LOG.isInfoEnabled()) {
-            LOG.info("Start state: " + startState);
+            LOG.info("Start state: " + this.getClass().getName() + "#" + startState);
         }
 
         while (!isFinishState(currentState)) {
@@ -28,6 +28,9 @@ public abstract class FiniteStateMachine<
 
             if (nextState.isPresent()) {
                 currentState = nextState.get();
+                if (LOG.isInfoEnabled()) {
+                    LOG.info("Accepted state: " + currentState);
+                }
             } else {
                 raiseDeadlockError(currentState, input);
             }
@@ -39,10 +42,6 @@ public abstract class FiniteStateMachine<
         final Set<State> transitions = getPossibleTransitions(currentState);
 
         for (State possibleState : transitions) {
-
-            if (LOG.isInfoEnabled()) {
-                LOG.info("Checking possible state: " + possibleState);
-            }
 
             if (acceptState(input, output, possibleState)) {
                 return Optional.of(possibleState);

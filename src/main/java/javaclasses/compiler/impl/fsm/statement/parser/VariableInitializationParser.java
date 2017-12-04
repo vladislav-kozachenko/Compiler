@@ -15,7 +15,7 @@ public class VariableInitializationParser implements SourceCodeParser {
 
         final String code = reader.getRemainingCode();
 
-        if (code.matches("^\\w+\\s*=")) {
+        if (code.matches("^\\w+\\s*=.*")) {
             new VariableInitialization().start(VariableInitializationState.START, reader, output);
             return true;
         }

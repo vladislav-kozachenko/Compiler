@@ -15,7 +15,7 @@ public class CycleParser implements SourceCodeParser {
 
         final String code = reader.getRemainingCode();
 
-        if (code.matches("^while")) {
+        if (code.matches("^while.*")) {
             new Cycle().start(CycleState.START, reader, output);
             return true;
         }

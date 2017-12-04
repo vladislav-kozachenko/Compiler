@@ -44,6 +44,6 @@ public class VariableInitialization extends FiniteStateMachine<List<Command>, So
 
     @Override
     protected void raiseDeadlockError(VariableInitializationState variableInitializationState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }

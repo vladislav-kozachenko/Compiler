@@ -43,6 +43,6 @@ public class Expression extends FiniteStateMachine<List<Command>, SourceCodeRead
 
     @Override
     protected void raiseDeadlockError(ExpressionState expressionState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }

@@ -47,6 +47,6 @@ public class FunctionCall extends FiniteStateMachine<List<Command>, SourceCodeRe
 
     @Override
     protected void raiseDeadlockError(FunctionCallState functionCallState, SourceCodeReader sourceCodeReader) throws CompilationError {
-
+        throw new CompilationError("Incorrect source.", sourceCodeReader.getParsePosition());
     }
 }
