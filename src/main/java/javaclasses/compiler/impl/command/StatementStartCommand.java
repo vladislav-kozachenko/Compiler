@@ -4,7 +4,7 @@ import javaclasses.compiler.Command;
 
 import java.util.Optional;
 
-public class LineDelimiterCommand implements Command {
+public class StatementStartCommand implements Command {
     @Override
     public Optional execute(Optional... args) {
         return Optional.empty();

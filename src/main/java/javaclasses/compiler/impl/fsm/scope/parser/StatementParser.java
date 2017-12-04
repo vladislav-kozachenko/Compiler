@@ -4,6 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
+import javaclasses.compiler.impl.command.StatementStartCommand;
 import javaclasses.compiler.impl.fsm.statement.Statement;
 import javaclasses.compiler.impl.fsm.statement.StatementState;
 
@@ -16,6 +17,7 @@ public class StatementParser implements SourceCodeParser {
         final String code = reader.getRemainingCode();
 
         if (!code.isEmpty() && !code.startsWith("}") && !code.startsWith(";")) {
+            output.add(new StatementStartCommand());
             new Statement().start(StatementState.START, reader, output);
             return true;
         }

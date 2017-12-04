@@ -4,7 +4,7 @@ import javaclasses.compiler.Command;
 import javaclasses.compiler.CompilationError;
 import javaclasses.compiler.impl.SourceCodeParser;
 import javaclasses.compiler.impl.SourceCodeReader;
-import javaclasses.compiler.impl.command.LineDelimiterCommand;
+import javaclasses.compiler.impl.command.StatementEndCommand;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class StatementEndParser implements SourceCodeParser {
         final String code = reader.getRemainingCode();
 
         if (code.startsWith(";") || code.startsWith("}")) {
-            output.add(new LineDelimiterCommand());
+            output.add(new StatementEndCommand());
             reader.incrementParsePosition(1);
             return true;
         }

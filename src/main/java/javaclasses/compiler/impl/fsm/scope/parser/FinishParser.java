@@ -13,7 +13,7 @@ public class FinishParser implements SourceCodeParser {
 
         final String code = reader.getRemainingCode();
 
-        return code.startsWith(";") || code.startsWith("}") || reader.endOfCode();
+        return code.startsWith(";") || code.startsWith("}") || code.isEmpty();
 
     }
 }
