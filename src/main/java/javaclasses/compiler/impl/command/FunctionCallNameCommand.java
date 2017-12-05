@@ -16,6 +16,6 @@ public class FunctionCallNameCommand implements Command {
 
     @Override
     public void execute(ExecutionContext context) {
-
+        context.getEvaluationContext().pushFunction(function);
     }
 }

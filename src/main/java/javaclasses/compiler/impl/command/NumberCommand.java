@@ -15,6 +15,6 @@ public class NumberCommand implements Command {
 
     @Override
     public void execute(ExecutionContext context) {
-
+        context.getEvaluationContext().pushNumber(number);
     }
 }

@@ -8,6 +8,6 @@ import java.util.Optional;
 public class OpeningBracketCommand implements Command {
     @Override
     public void execute(ExecutionContext context) {
-
+        context.getEvaluationContext().pushOpeningBracket();
     }
 }

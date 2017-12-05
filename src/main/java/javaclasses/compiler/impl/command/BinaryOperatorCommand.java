@@ -16,6 +16,6 @@ public class BinaryOperatorCommand implements Command {
 
     @Override
     public void execute(ExecutionContext context) {
-
+        context.getEvaluationContext().pushBinaryOperator(operator);
     }
 }

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class Executor {
 
-    public Optional execute(CompilationOutput input){
+    public Optional execute(CompilationOutput input) throws Exception {
         final ExecutionContext globalContext = new ExecutionContext();
         List<Command> commands = input.getCommandList();
 

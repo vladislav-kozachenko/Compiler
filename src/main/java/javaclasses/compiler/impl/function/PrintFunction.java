@@ -14,7 +14,7 @@ public class PrintFunction extends Function {
     @Override
     public Optional<Double> execute(List<Double> args) throws Exception {
         validateArgumentsNumber(args.size());
-        System.out.print(args.get(0));
+        System.out.println(args.get(0));
 
         return Optional.empty();
     }

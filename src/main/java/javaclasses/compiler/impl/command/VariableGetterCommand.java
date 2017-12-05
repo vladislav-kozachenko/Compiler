@@ -15,6 +15,6 @@ public class VariableGetterCommand implements Command {
 
     @Override
     public void execute(ExecutionContext context) {
-
+        context.getEvaluationContext().pushVariable(variableName);
     }
 }

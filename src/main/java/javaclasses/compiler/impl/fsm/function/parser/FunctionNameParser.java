@@ -15,7 +15,7 @@ public class FunctionNameParser implements SourceCodeParser {
         final FunctionFactory factory = new FunctionFactory();
 
         for (String functionName : factory.getFunctionNames()) {
-            if (code.matches("^" + functionName + "\\(")) {
+            if (code.startsWith(functionName + "(")) {
                 output.addCommand(new FunctionCallNameCommand(factory.getFunction(functionName)));
                 reader.incrementParsePosition(functionName.length());
                 return true;

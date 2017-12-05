@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class StatementEndCommand implements Command {
     @Override
-    public void execute(ExecutionContext context) {
-
+    public void execute(ExecutionContext context) throws Exception {
+        context.getEvaluationContext().pushDelimiter();
     }
 }
