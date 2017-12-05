@@ -15,6 +15,6 @@ public class DefineVariableCommand implements Command {
 
     @Override
     public void execute(ExecutionContext context) {
-        context.getEvaluationContext().pushVariable(variableName);
+        context.getEvaluationContext().declareVariable(variableName);
     }
 }

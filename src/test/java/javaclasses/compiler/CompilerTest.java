@@ -139,4 +139,11 @@ public class CompilerTest {
         Assert.assertEquals("8.0\r\n", outContent.toString());
     }
 
+    @Test
+    public void testVariables() throws Exception {
+        CompilationOutput output = compiler.compile("a=2;print(a);");
+        compiler.execute(output);
+        Assert.assertEquals("2.0\r\n", outContent.toString());
+    }
+
 }
