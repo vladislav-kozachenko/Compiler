@@ -1,6 +1,6 @@
 package javaclasses.compiler.impl;
 
-public interface BinaryOperator {
+public interface BinaryOperator extends Comparable<BinaryOperator> {
 
     /**
      * Evaluates atomic mathematical expression.

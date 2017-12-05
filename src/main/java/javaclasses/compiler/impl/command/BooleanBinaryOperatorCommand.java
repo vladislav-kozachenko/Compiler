@@ -2,6 +2,7 @@ package javaclasses.compiler.impl.command;
 
 import javaclasses.compiler.Command;
 import javaclasses.compiler.impl.BooleanBinaryOperator;
+import javaclasses.compiler.impl.executor.ExecutionContext;
 
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public class BooleanBinaryOperatorCommand implements Command {
     }
 
     @Override
-    public Optional execute(Optional... args) {
-        return Optional.empty();
+    public void execute(ExecutionContext context) {
+
     }
 }

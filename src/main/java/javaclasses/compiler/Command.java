@@ -1,7 +1,7 @@
 package javaclasses.compiler;
 
-import java.util.Optional;
+import javaclasses.compiler.impl.executor.ExecutionContext;
 
 public interface Command {
-    Optional execute(Optional... args);
+    void execute(ExecutionContext context);
 }

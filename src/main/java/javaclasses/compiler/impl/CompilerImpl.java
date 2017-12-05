@@ -22,7 +22,6 @@ public class CompilerImpl implements Compiler {
 
     @Override
     public Optional execute(CompilationOutput output) throws Exception {
-        final ExecutionContext globalContext = new ExecutionContext();
-        return new Executor().execute(output, globalContext);
+        return new Executor().execute(output);
     }
 }
