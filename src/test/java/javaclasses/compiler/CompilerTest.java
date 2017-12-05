@@ -124,4 +124,19 @@ public class CompilerTest {
         compiler.execute(output);
         Assert.assertEquals("100.0\r\n", outContent.toString());
     }
+
+    @Test
+    public void testOperatorsOrder() throws Exception {
+        CompilationOutput output = compiler.compile("print(2+2*2^2);");
+        compiler.execute(output);
+        Assert.assertEquals("10.0\r\n", outContent.toString());
+    }
+
+    @Test
+    public void testBrackets() throws Exception {
+        CompilationOutput output = compiler.compile("print((2+2)*2);");
+        compiler.execute(output);
+        Assert.assertEquals("8.0\r\n", outContent.toString());
+    }
+
 }
